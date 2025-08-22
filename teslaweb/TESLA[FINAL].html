@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tesla</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+      scroll-behavior: smooth;
+    }
+    .tesla-logo {
+      font-family: "Tesla", Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      font-size: 1.2rem;
+    }
+    .nav-link {
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      color: #000;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover, .nav-link:focus {
+      color: #1b4fef;
+      text-decoration: none;
+    }
+    .carousel-caption-top {
+      top: 20%;
+      bottom: auto;
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+    .carousel-caption-top h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      line-height: 1.1;
+    }
+    .carousel-caption-top small {
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+      display: block;
+      color: #e8e8e8;
+      opacity: 0.9;
+    }
+    .btn-blue {
+      background-color: #0071e3;
+      border: none;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-blue:hover, .btn-blue:focus {
+      background-color: #005bb5;
+      color: #fff;
+    }
+    .btn-outline-light {
+      color: #fff !important;
+      border-color: #fff !important;
+      font-weight: 600;
+    }
+    .btn-outline-light:hover, .btn-outline-light:focus {
+      background-color: #fff !important;
+      color: #000 !important;
+    }
+    .card-img-overlay {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.7) 100%);
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-weight: 600;
+    }
+    .card-img-overlay small {
+      font-weight: 300;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+    .btn-group .btn {
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.375rem 1.25rem;
+      margin-right: 0.5rem;
+    }
+    .info-card {
+      background-color: #f9f9f9;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .info-card-text {
+      flex: 1 1 auto;
+    }
+    .info-card h5 {
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+    }
+    .info-card small {
+      color: #707070;
+      font-weight: 400;
+      font-size: 0.9rem;
+      display: block;
+    }
+    .info-card button {
+      white-space: nowrap;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.375rem 1.25rem;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      border-radius: 0.5rem;
+      user-select: none;
+    }
+    footer {
+      font-size: 0.8125rem;
+      color: #393c41;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      user-select: none;
+    }
+    footer a {
+      color: #393c41;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    footer a:hover, footer a:focus {
+      text-decoration: underline;
+    }
+    .schedule-drive {
+      border-top: 1px solid #eaeaea;
+      padding: 1rem 1rem;
+      text-align: center;
+      font-weight: 700;
+      background-color: #f5f5f7;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.9375rem;
+      transition: background-color 0.2s ease;
+    }
+    .schedule-drive:hover {
+      background-color: #e1e1e6;
+    }
+    .schedule-drive svg {
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    @media (max-width: 575.98px) {
+      .carousel-control-prev, .carousel-control-next {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-2">
+    <div class="container-fluid">
+      <a class="navbar-brand tesla-logo text-black" href="#">TESLA</a>
+      <button 
+        class="navbar-toggler border-0" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarContent" 
+        aria-controls="navbarContent" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 gap-4 text-uppercase fw-semibold fs-7">
+          <li class="nav-item"><a class="nav-link" href="#">Vehicles</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Energy</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Charging</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Discover</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex gap-3 align-items-center">
+        <a href="#" class="text-black text-decoration-none fs-5" title="Help">?</a>
+        <a href="#" class="text-black text-decoration-none fs-5" title="Account">🌐</a>
+        <a href="#" class="text-black text-decoration-none fs-5" title="Menu">☰</a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000" data-bs-pause="hover">
+    <div class="carousel-inner">
+
+      <div class="carousel-item active position-relative">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/997cf7ad-be4e-4d44-b43c-e5ae39208c5c.png" 
+          class="d-block w-100" 
+          alt="Two Tesla cars, one red and one silver, parked on sandy desert with clear sky"/>
+        <div class="carousel-caption carousel-caption-top text-center">
+          <h1>$7,500 Federal Tax Credit Ending</h1>
+          <small>Limited Inventory – Take Delivery Now</small>
+          <div>
+            <a href="#" class="btn btn-blue me-2">Order Model 3</a>
+            <a href="#" class="btn btn-blue">Order Model Y</a>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev" aria-label="Previous slide">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next" aria-label="Next slide">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+
+    </div>
+    <div class="carousel-indicators mt-0 mb-3">
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    </div>
+  </div>
+
+  <div id="secondaryCarousel" class="carousel slide mt-4 container" data-bs-ride="carousel" data-bs-interval="9000" data-bs-pause="hover">
+    <div class="carousel-inner row g-3">
+
+      <div class="carousel-item active col-md-8 position-relative p-0">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7d9da440-ccd8-4732-88c2-cd285f71b2b8.png" 
+          class="d-block w-100 rounded-3" 
+          alt="Tesla Cybertruck parked on desert terrain with mountains in background"/>
+        <div class="card-img-overlay rounded-3">
+          <small class="text-white">Utility Truck</small>
+          <h4 style="font-family: 'Doomsday', cursive, monospace; font-weight: 900; font-size: 2rem;">Cybertruck</h4>
+          <small>Now Includes Luxe Package With FSD (Supervised) and More*</small>
+          <div class="btn-group mt-3">
+            <button class="btn btn-primary btn-sm btn-blue">Order Now</button>
+            <button class="btn btn-light btn-sm">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item col-md-4 position-relative p-0">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/792d4117-8c77-4ab8-8452-cb3be4c47270.png" 
+          class="d-block w-100 rounded-3" 
+          alt="Rear three-quarter view of a silver Tesla Model X luxury SUV on a country road"/>
+        <div class="card-img-overlay rounded-3">
+          <small>Luxury SUV</small>
+          <h4>Model X</h4>
+          <small>Now Includes Luxe Package With FSD (Supervised) and More*</small>
+          <div class="btn-group mt-3">
+            <button class="btn btn-primary btn-sm btn-blue">Order Now</button>
+            <button class="btn btn-light btn-sm">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#secondaryCarousel" data-bs-slide="prev" aria-label="Previous slide" style="width: 4rem;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#secondaryCarousel" data-bs-slide="next" aria-label="Next slide" style="width: 4rem;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+
+    <div class="carousel-indicators justify-content-center mt-4">
+      <button type="button" data-bs-target="#secondaryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#secondaryCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+  </div>
+
+  <div class="container mt-4 d-flex flex-column flex-md-row gap-3 justify-content-between">
+    <div class="info-card flex-fill">
+      <div class="info-card-text">
+        <h5>Current Offers</h5>
+        <small>Limited inventory. Take delivery today.</small>
+        <button class="btn btn-outline-secondary btn-sm mt-2">Learn More</button>
+      </div>
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e9831656-92bb-436a-86b1-dc4ff66dc229.png" alt="Several Tesla cars parked under bright sunny sky on asphalt" class="d-none d-md-block rounded" style="width: 140px; height: 80px; object-fit: cover;">
+    </div>
+    <div class="info-card flex-fill">
+      <div class="info-card-text">
+        <h5>Lease a Tesla</h5>
+        <small>Explore lease pricing for Model 3 and Model Y, starting from $299/mo.</small>
+        <button class="btn btn-outline-secondary btn-sm mt-2">Compare</button>
+      </div>
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fabcea78-051f-496b-85ec-15fa57544148.png" alt="Side view of red Tesla parked on paved area" class="d-none d-md-block rounded" style="width: 140px; height: 80px; object-fit: cover;">
+    </div>
+  </div>
+
+  
+  <div class="container my-4 d-flex flex-column flex-lg-row gap-3">
+    <div class="card bg-dark text-white flex-fill" style="min-height: 280px; position: relative; overflow: hidden; border-radius: 0.5rem;">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c9480e8a-7736-4fdb-a02b-dc567d6450e9.png" alt="Interior of Tesla with dashboard screen showing autopilot driving in rainy weather" 
+        class="card-img" style="object-fit: cover; height: 100%; width: 100%;" />
+      <div class="card-img-overlay d-flex flex-column justify-content-end p-4" style="background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);">
+        <h4 class="card-title">Full Self-Driving (Supervised)</h4>
+        <div>
+          <button class="btn btn-primary btn-sm btn-blue me-2">Demo Drive</button>
+          <button class="btn btn-light btn-sm">Learn More</button>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-dark text-white flex-fill" style="min-height: 280px; position: relative; overflow: hidden; border-radius: 0.5rem;">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/745d8d26-359d-4511-8711-8a9ba174fb86.png" alt="Electric car charging with family standing near, modern home background" class="card-img" style="object-fit: cover; height: 100%; width: 100%;" />
+      <div class="card-img-overlay d-flex flex-column justify-content-end p-4" style="background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);">
+        <h4 class="card-title">Features That Come Standard</h4>
+        <button class="btn btn-primary btn-sm btn-blue">Discover</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container my-4">
+    <div class="map-container rounded">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.9276108256736!2d106.97310707499189!3d-6.403327993587379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699445f0d1c541%3A0x3c8a27a75eb76093!2sSMK%20Metland%20School!5e0!3m2!1sid!2sid!4v1755877521718!5m2!1sid!2sid" width="1000" height="1000" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3">
+      <div>
+        <h4 class="fw-bold mb-1">Find Your Charge</h4>
+        <small class="text-muted">View the network of Tesla Superchargers and Destination Chargers available near you.</small>
+      </div>
+      <div class="d-flex gap-3 mt-3 mt-md-0">
+        <button class="btn btn-dark btn-sm fw-semibold">View Network</button>
+        <button class="btn btn-outline-secondary btn-sm fw-semibold">Learn More</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="energyCarousel" class="carousel slide container my-4" data-bs-ride="carousel" data-bs-interval="9000" data-bs-pause="hover">
+    <div class="carousel-inner row g-3">
+
+      <div class="carousel-item active col-md-8 position-relative p-0">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6c19ef37-1c4c-4eb3-81a0-a52d13cf8eb8.png" 
+          class="d-block w-100 rounded-3" 
+          alt="Modern house with large solar panels on the roof and eco-friendly Tesla parked in front lawn"/>
+        <div class="card-img-overlay rounded-3 d-flex flex-column justify-content-end">
+          <h4 class="fw-bold text-white">Solar Panels</h4>
+          <small class="text-white-50 mb-3">Use Solar Energy to Power Your Home and Charge Your Tesla</small>
+          <div class="btn-group">
+            <button class="btn btn-primary btn-sm btn-blue">Order Now</button>
+            <button class="btn btn-light btn-sm">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item col-md-4 position-relative p-0">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/67e12182-fbf0-4b88-8e57-770eb308faae.png" 
+          class="d-block w-100 rounded-3" 
+          alt="Tesla Powerwall energy storage system installed near modern house wall"/>
+        <div class="card-img-overlay rounded-3 d-flex flex-column justify-content-end">
+          <h4 class="fw-bold text-white">Powerwall</h4>
+          <small class="text-white-50 mb-3">Keep Your Lights On During Outages</small>
+          <div>
+            <button class="btn btn-primary btn-sm btn-blue">Order Now</button>
+            <button class="btn btn-light btn-sm">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#energyCarousel" data-bs-slide="prev" aria-label="Previous" style="width: 4rem;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#energyCarousel" data-bs-slide="next" aria-label="Next" style="width: 4rem;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+    <div class="carousel-indicators justify-content-center mt-4">
+      <button type="button" data-bs-target="#energyCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#energyCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+  </div>
+
+  <div class="container mb-4">
+    <small class="text-muted" style="font-size: 0.75rem;">
+      *$7,500 federal tax credit available to eligible buyers who purchase and take delivery of a qualifying vehicle by September 30, 2025. Leases not eligible. Not all model trims will qualify. MSRP cap of $80,000 for Cybertruck and Model Y; $55,000 for Model 3 applies. Consult tax professional regarding your personal eligibility.
+      <br />
+      † Terms subject to change. <a href="#" class="text-decoration-underline">Learn more</a>.
+    </small>
+  </div>
+
+  <footer>
+    Tesla | 
+    <a href="#">Privacy & Legal</a>  | 
+    <a href="#">Vehicle Recalls</a>  | 
+    <a href="#">Contact</a>  | 
+    <a href="#">News</a>  | 
+    <a href="#">Get Updates</a>  | 
+    <a href="#">Locations</a>  | 
+    <a href="#">Learn</a>
+  </footer>
+
+  <div class="schedule-drive" role="button" tabindex="0" aria-label="Schedule a Drive Today">
+    <svg width="18" height="18" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 0.5rem;">
+      <path d="M20 7L9 18l-5-5"/>
+    </svg>
+    Schedule a Drive Today
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
